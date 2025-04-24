@@ -10,11 +10,11 @@ import UIKit
 
 
 struct ContentView: View {
-    
+    @ObservedObject var viewModel: MangaViewModel
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: MyBooksView()) {
+                NavigationLink(destination: MyBooksView(viewModel: viewModel)) {
                     HStack {
                         Text("My Books")
                             .font(.headline)
@@ -27,7 +27,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, maxHeight: 50)
                     .padding()
                 }
-                NavigationLink(destination: ToBeRead()) {
+                NavigationLink(destination: ToBeReadView(viewModel: viewModel)) {
                     HStack {
                         Text("To Be Read")
                             .foregroundColor(.red)
@@ -40,7 +40,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, maxHeight: 50)
                     .padding()
                 }
-                NavigationLink(destination: Add()) {
+                NavigationLink(destination: AddView(viewModel: viewModel)) {
                     HStack {
                         Text("Add")
                             .font(.headline)
@@ -53,7 +53,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity, maxHeight: 50)
                     .padding()
                 }
-                NavigationLink(destination: Favorites()) {
+                NavigationLink(destination: FavoritesView(viewModel: viewModel)) {
                     HStack {
                         Text("Favorites")
                             .font(.headline)
@@ -78,5 +78,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(viewModel: MangaViewModel())
 }
